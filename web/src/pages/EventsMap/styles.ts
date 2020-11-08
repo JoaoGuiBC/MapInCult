@@ -31,12 +31,12 @@ export const StyledMapContainer = styled(MapContainer)`
 
 export const StyledPopup = styled(Popup)`
   .leaflet-popup-content-wrapper {
-    background: #f4e7d6;
-    border-radius: 10px;
+    background: #e7d6bf;
+    border-radius: 5px;
   }
 
   .leaflet-popup-tip {
-    background: #f4e7d6;
+    background: #e7d6bf;
   }
 
   .leaflet-popup-content {
@@ -54,9 +54,19 @@ export const StyledPopup = styled(Popup)`
     }
 
     p {
+      overflow: auto;
+      max-height: 200px;
+
+      margin-bottom: 0;
+      padding-right: 10px;
+
       font-size: 17px;
       line-height: 1.5em;
       text-align: justify;
+    }
+
+    p + p {
+      padding: 0;
     }
 
     a {

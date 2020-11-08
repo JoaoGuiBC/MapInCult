@@ -8,6 +8,20 @@ export default createGlobalStyle`
     outline: 0;
   }
 
+  ::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #312e38;
+    border-radius: 20px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #6669;
+    border-radius: 20px;
+  }
+
   body {
     background: #e7d6bf;
     color: #FFF;
