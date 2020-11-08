@@ -13,7 +13,7 @@
 
 ## 🖥 Projeto
 
-Map In Cult é uma single-page-aplication que visa agregar informação e disponibilizar um mapa contendo a posição de onde diversos eventos históricos ocorreram. Ao selecionar um evento qualquer, é apresentado o nome do evento, o ano em que ocorreu, um breve resumo de seus acontecimento e um link para uma página com mais informações. Também é possível adicionar novos eventos dinamicamente.
+Map In Cult é uma Single-page application que visa agregar informação e disponibilizar um mapa contendo a posição de onde diversos eventos históricos ocorreram. Ao selecionar um evento qualquer, é apresentado o nome do evento, o ano em que ocorreu, um breve resumo de seus acontecimento e um link para uma página com mais informações. Também é possível adicionar novos eventos dinamicamente.
 
 ## ⚙ Tecnologias
 
