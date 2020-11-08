@@ -1,0 +1,40 @@
+import { getRepository } from 'typeorm';
+
+import Event from '../models/Event';
+
+interface Request {
+  name: string;
+  description: string;
+  year: number;
+  latitude: number;
+  longitude: number;
+  link: string;
+}
+
+class CreateEventService {
+  public async execute({
+    name,
+    description,
+    year,
+    latitude,
+    longitude,
+    link,
+  }: Request): Promise<Event> {
+    const eventRepository = getRepository(Event);
+
+    const event = eventRepository.create({
+      name,
+      description,
+      year,
+      latitude,
+      longitude,
+      link,
+    });
+
+    await eventRepository.save(event);
+
+    return event;
+  }
+}
+
+export default CreateEventService;
