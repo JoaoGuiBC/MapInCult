@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { FiPlus } from 'react-icons/fi';
+import React, { useCallback, useEffect, useState } from 'react';
+import {
+  FiPlus,
+  FiChevronsLeft,
+  FiChevronsRight,
+  FiMinus,
+} from 'react-icons/fi';
 import { TileLayer, Marker } from 'react-leaflet';
 import Leaflet from 'leaflet';
 
 import 'leaflet/dist/leaflet.css';
 
 import {
-  Container,
-  Sidebar,
   Header,
+  Sidebar,
+  Container,
   StyledLink,
   StyledPopup,
+  TimelineContainer,
   StyledMapContainer,
 } from './styles';
 
@@ -39,11 +45,23 @@ interface eventsData {
 
 const EventsMap: React.FC = () => {
   const [events, setEvents] = useState<eventsData[]>([]);
+  const [initialDate, setInitialDate] = useState<number>(2001);
+  const [finalDate, setFinalDate] = useState<number>(2100);
 
   useEffect(() => {
     api.get('events').then(response => {
       setEvents(response.data);
     });
+  }, []);
+
+  const decreaseDate = useCallback(() => {
+    setInitialDate(Date => Date - 100);
+    setFinalDate(Date => Date - 100);
+  }, []);
+
+  const increaseDate = useCallback(() => {
+    setInitialDate(Date => Date + 100);
+    setFinalDate(Date => Date + 100);
   }, []);
 
   return (
@@ -63,6 +81,10 @@ const EventsMap: React.FC = () => {
         minZoom={4}
         maxZoom={7}
         zoomControl={false}
+        doubleClickZoom={false}
+        years={events.map(event => event.year)}
+        initialDate={initialDate}
+        finalDate={finalDate}
       >
         <TileLayer
           url={`https://api.mapbox.com/styles/v1/joaoguibc/ckh8f39x311nc19qhcqusrknv/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
@@ -89,6 +111,22 @@ const EventsMap: React.FC = () => {
           );
         })}
       </StyledMapContainer>
+
+      <TimelineContainer>
+        <button type="button" onClick={decreaseDate}>
+          <FiChevronsLeft size={30} color="#312e38" />
+        </button>
+
+        <p>
+          {initialDate}
+          <FiMinus />
+          {finalDate}
+        </p>
+
+        <button type="button" onClick={increaseDate}>
+          <FiChevronsRight size={30} color="#312e38" />
+        </button>
+      </TimelineContainer>
 
       <StyledLink to="wikipedia.com">
         <FiPlus size={32} color="#312e38" />

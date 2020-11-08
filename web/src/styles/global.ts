@@ -26,6 +26,7 @@ export default createGlobalStyle`
     background: #e7d6bf;
     color: #FFF;
     -webkit-font-smoothing: antialiased;
+    overflow: hidden;
   }
 
   p {
