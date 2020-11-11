@@ -3,7 +3,7 @@ import { getRepository } from 'typeorm';
 
 import CreateEventService from '../services/CreateEventService';
 
-// import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 
 import Events from '../models/Event';
 
@@ -16,7 +16,7 @@ eventsRouter.get('/', async (request, response) => {
   return response.json(events);
 });
 
-eventsRouter.post('/', async (request, response) => {
+eventsRouter.post('/', ensureAuthenticated, async (request, response) => {
   const { name, description, year, latitude, longitude, link } = request.body;
 
   const CreateEvent = new CreateEventService();

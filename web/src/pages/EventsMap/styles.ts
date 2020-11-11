@@ -33,20 +33,19 @@ export const Container = styled.div`
 
 export const StyledMapContainer = styled(MapContainer)<eventsYear>`
   z-index: 1;
-
-  .leaflet-map-pane {
+  /* .leaflet-map-pane {
     ${props =>
-      props.years.map(
-        (year, index) =>
-          css`
-            .leaflet-marker-pane img:nth-child(${index + 1}) {
-              ${year >= props.initialDate && year <= props.finalDate
-                ? 'visibility: visible'
-                : 'visibility: hidden'}
-            }
-          `,
-      )}
-  }
+    props.years.map(
+      (year, index) =>
+        css`
+          .leaflet-marker-pane img:nth-child(${index + 1}) {
+            ${year >= props.initialDate && year <= props.finalDate
+              ? 'visibility: visible'
+              : 'visibility: hidden'}
+          }
+        `,
+    )}
+  } */
 `;
 
 export const StyledPopup = styled(Popup)`

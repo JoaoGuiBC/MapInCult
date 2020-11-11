@@ -1,7 +1,7 @@
 import { createConnection } from 'typeorm';
 
-async function teste() {
+async function connect() {
   await createConnection();
 }
 
-teste();
+connect();

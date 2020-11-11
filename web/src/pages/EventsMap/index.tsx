@@ -91,24 +91,28 @@ const EventsMap: React.FC = () => {
         />
 
         {events.map(event => {
-          return (
-            <Marker
-              key={event.id}
-              icon={mapIcon}
-              position={[event.latitude, event.longitude]}
-            >
-              <StyledPopup closeButton={false} minWidth={240} maxWidth={340}>
-                <h2>{`${event.name} - ${event.year}`}</h2>
+          if (event.year >= initialDate && event.year <= finalDate) {
+            return (
+              <Marker
+                key={event.id}
+                icon={mapIcon}
+                position={[event.latitude, event.longitude]}
+              >
+                <StyledPopup closeButton={false} minWidth={240} maxWidth={340}>
+                  <h2>{`${event.name} - ${event.year}`}</h2>
 
-                <p>{event.description}</p>
+                  <p>{event.description}</p>
 
-                <p>
-                  <strong>Leia mais: </strong>
-                  <a href={event.link}>Wikipedia</a>
-                </p>
-              </StyledPopup>
-            </Marker>
-          );
+                  <p>
+                    <strong>Leia mais: </strong>
+                    <a href={event.link}>Wikipedia</a>
+                  </p>
+                </StyledPopup>
+              </Marker>
+            );
+          }
+
+          return '';
         })}
       </StyledMapContainer>
 
