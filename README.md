@@ -24,4 +24,4 @@ O presente projeto foi desenvolvido com o uso das seguintes tecnologias:
 - [TypeScript](https://www.typescriptlang.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [React Leaflet](https://react-leaflet.js.org/)
-- [Mapbox](https://docs.mapbox.com/) 👈 Você precisará ter uma conta para criar um access token
+- [Mapbox](https://docs.mapbox.com/) 👈 Você precisará ter uma conta para gerar um access token

@@ -14,11 +14,13 @@ import {
   Header,
   Sidebar,
   Container,
-  StyledLink,
+  StyledButton,
   StyledPopup,
   TimelineContainer,
   StyledMapContainer,
 } from './styles';
+
+import Modals from '../../components/Modals';
 
 import mapMarkerImg from '../../images/map-marker.svg';
 import logoImg from '../../images/logo_transparent.svg';
@@ -47,12 +49,15 @@ const EventsMap: React.FC = () => {
   const [events, setEvents] = useState<eventsData[]>([]);
   const [initialDate, setInitialDate] = useState<number>(2001);
   const [finalDate, setFinalDate] = useState<number>(2100);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     api.get('events').then(response => {
       setEvents(response.data);
     });
   }, []);
+
+  const toggleModal = useCallback(() => setModalOpen(opened => !opened), []);
 
   const decreaseDate = useCallback(() => {
     setInitialDate(Date => Date - 100);
@@ -132,9 +137,11 @@ const EventsMap: React.FC = () => {
         </button>
       </TimelineContainer>
 
-      <StyledLink to="wikipedia.com">
+      <StyledButton onClick={toggleModal}>
         <FiPlus size={32} color="#312e38" />
-      </StyledLink>
+      </StyledButton>
+
+      <Modals isOpen={modalOpen} setIsOpen={toggleModal} />
     </Container>
   );
 };

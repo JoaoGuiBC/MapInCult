@@ -1,8 +1,7 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { shade } from 'polished';
 
 import { MapContainer, Popup } from 'react-leaflet';
-import { Link } from 'react-router-dom';
 
 interface eventsYear {
   years: number[];
@@ -33,19 +32,6 @@ export const Container = styled.div`
 
 export const StyledMapContainer = styled(MapContainer)<eventsYear>`
   z-index: 1;
-  /* .leaflet-map-pane {
-    ${props =>
-    props.years.map(
-      (year, index) =>
-        css`
-          .leaflet-marker-pane img:nth-child(${index + 1}) {
-            ${year >= props.initialDate && year <= props.finalDate
-              ? 'visibility: visible'
-              : 'visibility: hidden'}
-          }
-        `,
-    )}
-  } */
 `;
 
 export const StyledPopup = styled(Popup)`
@@ -130,7 +116,7 @@ export const Header = styled.header`
   }
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledButton = styled.button`
   position: absolute;
   z-index: 10;
   right: 25px;
@@ -141,6 +127,7 @@ export const StyledLink = styled(Link)`
 
   background: #e7d6bf;
   border-radius: 15px;
+  border: none;
 
   display: flex;
   justify-content: center;
