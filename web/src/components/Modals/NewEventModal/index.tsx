@@ -29,52 +29,55 @@ const NewEventModal: React.FC = () => {
     },
   });
 
-  const handleSubmit = useCallback(async data => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async data => {
+      try {
+        formRef.current?.setErrors({});
 
-      const schema = Yup.object().shape({
-        name: Yup.string().required('Nome do evento obrigatório'),
-        description: Yup.string().required('Descrição obrigatória'),
-        year: Yup.number()
-          .required('Ano obrigatório')
-          .integer('Informe um ano válido'),
-        latitude: Yup.number().required('Latitude obrigatória'),
-        longitude: Yup.number().required('Latitude obrigatória'),
-        link: Yup.string()
-          .required('Link obrigatório')
-          .url('Informe um link válido'),
-      });
+        const schema = Yup.object().shape({
+          name: Yup.string().required('Nome do evento obrigatório'),
+          description: Yup.string().required('Descrição obrigatória'),
+          year: Yup.number()
+            .required('Ano obrigatório')
+            .integer('Informe um ano válido'),
+          latitude: Yup.number().required('Latitude obrigatória'),
+          longitude: Yup.number().required('Latitude obrigatória'),
+          link: Yup.string()
+            .required('Link obrigatório')
+            .url('Informe um link válido'),
+        });
 
-      await schema.validate(data, {
-        abortEarly: false,
-      });
+        await schema.validate(data, {
+          abortEarly: false,
+        });
 
-      await api.post('events', data, {
-        headers: {
-          authorization: token,
-        },
-      });
+        await api.post('events', data, {
+          headers: {
+            authorization: token,
+          },
+        });
 
-      addToast({
-        title: 'Evento cadastrado com sucesso',
-        type: 'success',
-      });
-    } catch (err) {
-      if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
+        addToast({
+          title: 'Evento cadastrado com sucesso',
+          type: 'success',
+        });
+      } catch (err) {
+        if (err instanceof Yup.ValidationError) {
+          const errors = getValidationErrors(err);
 
-        formRef.current?.setErrors(errors);
+          formRef.current?.setErrors(errors);
 
-        return;
+          return;
+        }
+
+        addToast({
+          title: 'Erro ao cadastrar, cheque as informações',
+          type: 'error',
+        });
       }
-
-      addToast({
-        title: 'Erro ao cadastrar, cheque as informações',
-        type: 'error',
-      });
-    }
-  }, []);
+    },
+    [addToast, token],
+  );
 
   return (
     <Container>

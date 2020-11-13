@@ -18,15 +18,15 @@ const icons = {
 const Toast: React.FC<ToastProps> = ({ message, style }) => {
   const { removeToast } = useToast();
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     removeToast(message.id);
-  //   }, 3000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      removeToast(message.id);
+    }, 3000);
 
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [removeToast, message.id]);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [removeToast, message.id]);
 
   return (
     <Container type={message.type} style={style}>
