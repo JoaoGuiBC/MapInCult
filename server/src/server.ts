@@ -31,6 +31,6 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   });
 });
 
-app.listen(3333, () => {
-  console.log('SERVER STARTED ON PORT 3333!');
+app.listen(process.env.SERVER_PORT, () => {
+  console.log(`SERVER STARTED ON PORT ${process.env.SERVER_PORT}!`);
 });

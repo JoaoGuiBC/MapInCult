@@ -1,20 +1,38 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  TextareaHTMLAttributes,
+} from 'react';
+import { useField } from '@unform/core';
 import { IconBaseProps } from 'react-icons';
 
-import { Container } from './styles';
+import { FiAlertTriangle } from 'react-icons/fi';
+import { Container, Error } from './styles';
 
-interface TextAreaProps {
-  placeholder: string;
+interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  name: string;
   icon: React.ComponentType<IconBaseProps>;
 }
 
 const TextArea: React.FC<TextAreaProps> = ({
-  placeholder,
+  name,
   icon: Icon,
+  ...rest
 }: TextAreaProps) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
+  const { fieldName, error, registerField } = useField(name);
+
+  useEffect(() => {
+    registerField({
+      name: fieldName,
+      ref: textAreaRef.current,
+      path: 'value',
+    });
+  }, [registerField, fieldName]);
 
   const handleTextAreaOnFocus = useCallback(() => setIsFocused(true), []);
 
@@ -25,14 +43,19 @@ const TextArea: React.FC<TextAreaProps> = ({
   }, []);
 
   return (
-    <Container isFocused={isFocused} isFilled={isFilled}>
-      <Icon color="#312e38" />
+    <Container isErrored={!!error} isFocused={isFocused} isFilled={isFilled}>
+      <Icon />
       <textarea
         ref={textAreaRef}
         onFocus={handleTextAreaOnFocus}
         onBlur={handleTextAreaOnBlur}
-        placeholder={placeholder}
+        {...rest}
       />
+      {!!error && (
+        <Error title={error}>
+          <FiAlertTriangle size={20} />
+        </Error>
+      )}
     </Container>
   );
 };

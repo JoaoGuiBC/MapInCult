@@ -27,6 +27,27 @@ export default createGlobalStyle`
     color: #FFF;
     -webkit-font-smoothing: antialiased;
     overflow: hidden;
+
+    div.ReactModalPortal {
+      div.ReactModal__Overlay--after-open {
+        div.ReactModal__Content--after-open {
+          -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
+          -moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+          box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+        }
+
+        &::before {
+          content: '';
+          border-style: solid;
+          border-color: #e7d6bf transparent;
+          border-width: 17px 10px 0 10px;
+          top: 100%;
+          position: absolute;
+          right: 2%;
+          transform: translateX(-9%);
+        }
+      }
+    }
   }
 
   p {

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import EventsMap from '../pages/EventsMap';
+import Dashboard from '../pages/Dashboard';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route path="/" exact component={EventsMap} />
+    <Route path="/" exact component={Dashboard} />
   </Switch>
 );
 

@@ -3,7 +3,9 @@ import { FiXCircle } from 'react-icons/fi';
 
 import ReactModal from 'react-modal';
 
-// import NewEventModal from './NewEventModal';
+import { useAuth } from '../../hooks/auth';
+
+import NewEventModal from './NewEventModal';
 import SignInModal from './SignInModal';
 
 import { StyledButton } from './styles';
@@ -16,19 +18,22 @@ interface ModalProps {
 const Modals: React.FC<ModalProps> = ({ isOpen, setIsOpen }: ModalProps) => {
   const [modalStatus, setModalStatus] = useState(isOpen);
 
+  const { token } = useAuth();
+
   useEffect(() => {
     setModalStatus(isOpen);
   }, [isOpen]);
 
   return (
     <ReactModal
+      ariaHideApp={false}
       onRequestClose={setIsOpen}
       isOpen={modalStatus}
       style={{
         overlay: {
           zIndex: 10,
           backgroundColor: 'none',
-          width: '350px',
+          width: '450px',
           height: '85vh',
 
           position: 'absolute',
@@ -46,7 +51,7 @@ const Modals: React.FC<ModalProps> = ({ isOpen, setIsOpen }: ModalProps) => {
           right: '0px',
           bottom: '0px',
 
-          width: '350px',
+          width: '450px',
           height: '85vh',
 
           border: '1px solid #f4e7d6',
@@ -64,7 +69,7 @@ const Modals: React.FC<ModalProps> = ({ isOpen, setIsOpen }: ModalProps) => {
         <FiXCircle color="#312e38" size={24} />
       </StyledButton>
 
-      <SignInModal />
+      {token ? <NewEventModal /> : <SignInModal />}
     </ReactModal>
   );
 };

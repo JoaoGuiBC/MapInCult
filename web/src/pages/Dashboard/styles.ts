@@ -88,6 +88,8 @@ export const Sidebar = styled.aside`
   background: linear-gradient(329.54deg, #e7d6bf 0%, #f4e7d6 100%);
   padding: 0px 40px;
 
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 10px;
+
   z-index: 20;
   display: flex;
   flex-direction: column;
@@ -128,6 +130,7 @@ export const StyledButton = styled.button`
   background: #e7d6bf;
   border-radius: 15px;
   border: none;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 10px;
 
   display: flex;
   justify-content: center;
@@ -146,8 +149,10 @@ export const TimelineContainer = styled.div`
   right: 90px;
   bottom: 25px;
 
+  background: #312e38;
   border: 1px solid #e7d6bf;
   border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 0 10px;
 
   padding: 0;
   margin: 0;

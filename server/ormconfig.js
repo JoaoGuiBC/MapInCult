@@ -1,10 +1,10 @@
-{
+module.exports = {
   "type": "postgres",
   "host": "localhost",
   "port": 5432,
-  "username": "postgres",
-  "password": "docker",
-  "database": "mapincult",
+  "username": process.env.POSTGRESQL_USERNAME,
+  "password": process.env.POSTGRESQL_PASSWORD,
+  "database": process.env.POSTGRESQL_DATABASE,
   "entities": [
     "./src/models/*.ts"
   ],

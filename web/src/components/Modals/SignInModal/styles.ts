@@ -1,5 +1,6 @@
 import { shade } from 'polished';
 import styled from 'styled-components';
+import { Form } from '@unform/web';
 
 export const Container = styled.div`
   display: flex;
@@ -15,7 +16,7 @@ export const Container = styled.div`
   }
 `;
 
-export const StyledForm = styled.form`
+export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
 
@@ -25,9 +26,7 @@ export const StyledForm = styled.form`
 
   align-items: center;
 
-  div {
-    width: 100%;
-
+  > div {
     margin-bottom: 30px;
   }
 
