@@ -25,3 +25,13 @@ O presente projeto foi desenvolvido com o uso das seguintes tecnologias:
 - [PostgreSQL](https://www.postgresql.org/)
 - [React Leaflet](https://react-leaflet.js.org/)
 - [Mapbox](https://docs.mapbox.com/) 👈 Você precisará ter uma conta para gerar um access token
+
+## 🛠 To-Do
+
+Funcionalidades que podem ser adicionadas para melhorar a aplicação.
+
+- Sistema para pesquisar eventos pelo nome;
+- Adicionar um mini-mapa para selecionar a latitude e longitude quando for cadastrar um novo evento;
+- Opção para deletar eventos;
+- Opção para modificar eventsource;
+- Versão mobile;
