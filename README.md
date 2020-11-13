@@ -34,5 +34,5 @@ Funcionalidades que podem ser adicionadas para melhorar a aplicação:
 - Sistema para pesquisar eventos pelo nome;
 - Adicionar um mini-mapa para selecionar a latitude e longitude quando for cadastrar um novo evento;
 - Opção para deletar eventos;
-- Opção para modificar eventsource;
+- Opção para modificar eventos;
 - Versão mobile;
