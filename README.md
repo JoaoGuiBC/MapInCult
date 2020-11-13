@@ -4,7 +4,8 @@
 
 <p align="center">
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-tecnologias">Tecnologias</a>
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#to-do">To-Do</a>
 </p>
 
 <p align="center">
@@ -28,7 +29,7 @@ O presente projeto foi desenvolvido com o uso das seguintes tecnologias:
 
 ## 🛠 To-Do
 
-Funcionalidades que podem ser adicionadas para melhorar a aplicação.
+Funcionalidades que podem ser adicionadas para melhorar a aplicação:
 
 - Sistema para pesquisar eventos pelo nome;
 - Adicionar um mini-mapa para selecionar a latitude e longitude quando for cadastrar um novo evento;
