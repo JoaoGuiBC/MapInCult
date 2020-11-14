@@ -20,8 +20,8 @@ Map In Cult é uma Single-page application que visa agregar informação e dispo
 
 O presente projeto foi desenvolvido com o uso das seguintes tecnologias:
 
-- [Node.js](https://nodejs.org/en/)
 - [React.js](https://reactjs.org)
+- [Node.js](https://nodejs.org/en/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [React Leaflet](https://react-leaflet.js.org/)
@@ -31,8 +31,9 @@ O presente projeto foi desenvolvido com o uso das seguintes tecnologias:
 
 Funcionalidades que podem ser adicionadas para melhorar a aplicação:
 
-- Sistema para pesquisar eventos pelo nome;
-- Adicionar um mini-mapa para selecionar a latitude e longitude quando for cadastrar um novo evento;
+- Versão mobile;
 - Opção para deletar eventos;
 - Opção para modificar eventos;
-- Versão mobile;
+- Adicionar opção para resetar senha;
+- Sistema para pesquisar eventos pelo nome;
+- Adicionar um mini-mapa para selecionar a latitude e longitude quando for cadastrar um novo evento;
