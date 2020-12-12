@@ -22,9 +22,9 @@ O presente projeto foi desenvolvido com o uso das seguintes tecnologias:
 
 - [React.js](https://reactjs.org)
 - [Node.js](https://nodejs.org/en/)
-- [TypeScript](https://www.typescriptlang.org/)
 - [TypeORM](https://typeorm.io/#/)
 - [MongoDB](https://www.mongodb.com/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [React Leaflet](https://react-leaflet.js.org/)
 - [Mapbox](https://docs.mapbox.com/) 👈 Você precisará ter uma conta para gerar um access token
 
