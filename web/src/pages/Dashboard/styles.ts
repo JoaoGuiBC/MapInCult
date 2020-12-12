@@ -1,24 +1,19 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 import { MapContainer, Popup } from 'react-leaflet';
 
-interface eventsYear {
-  years: number[];
-  initialDate: number;
-  finalDate: number;
-}
+import {
+  enterAnimation,
+  appearAnimation,
+  showHeaderAnimation,
+  hideHeaderAnimation,
+  dissappearAnimation,
+} from '../../styles/animations';
 
-const appearFromLeft = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-600px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-`;
+interface menuVisibility {
+  isVisible: boolean;
+}
 
 export const Container = styled.div`
   width: 100vw;
@@ -27,10 +22,10 @@ export const Container = styled.div`
   position: relative;
   display: flex;
 
-  animation: ${appearFromLeft} 0.6s;
+  animation: ${enterAnimation} 1s;
 `;
 
-export const StyledMapContainer = styled(MapContainer)<eventsYear>`
+export const StyledMapContainer = styled(MapContainer)`
   z-index: 1;
 `;
 
@@ -52,6 +47,7 @@ export const StyledPopup = styled(Popup)`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 
     h2 {
       font-size: 18px;
@@ -83,10 +79,12 @@ export const StyledPopup = styled(Popup)`
   }
 `;
 
-export const Sidebar = styled.aside`
+export const Sidebar = styled.aside<menuVisibility>`
   width: 350px;
+  height: 100vh;
   background: linear-gradient(329.54deg, #e7d6bf 0%, #f4e7d6 100%);
   padding: 0px 40px;
+  position: absolute;
 
   box-shadow: rgba(0, 0, 0, 0.8) 0 0 10px;
 
@@ -94,6 +92,59 @@ export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  ${props =>
+    !props.isVisible &&
+    css`
+      width: 35px;
+      height: 40px;
+      padding: 0;
+      border-radius: 10px;
+      animation: ${dissappearAnimation} 0.3s;
+
+      button {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+
+      header {
+        animation: ${hideHeaderAnimation} 0.3s;
+        transform: translateX(-200px);
+      }
+    `}
+
+  ${props =>
+    props.isVisible &&
+    css`
+      width: 350px;
+      height: 100vh;
+      padding: 0px 40px;
+      border-radius: 0;
+      animation: ${appearAnimation} 0.3s;
+
+      button {
+        svg {
+          transform: rotate(0deg);
+        }
+      }
+
+      header {
+        animation: ${showHeaderAnimation} 0.3s;
+        transform: translateX(0);
+      }
+    `}
+
+  button {
+    position: absolute;
+
+    background: none;
+    border: none;
+    z-index: 10;
+
+    right: 2px;
+    top: 5px;
+  }
 `;
 
 export const Header = styled.header`
@@ -102,6 +153,7 @@ export const Header = styled.header`
 
   align-items: center;
   justify-content: center;
+  visibility: visible;
 
   color: #312e38;
 
@@ -188,4 +240,13 @@ export const TimelineContainer = styled.div`
     display: flex;
     align-items: center;
   }
+`;
+
+export const ExcludeButton = styled.button`
+  position: absolute;
+
+  right: 9px;
+  top: 2px;
+  background: none;
+  border: none;
 `;

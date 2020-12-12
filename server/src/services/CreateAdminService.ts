@@ -1,8 +1,8 @@
-import { getRepository } from 'typeorm';
+import { getMongoRepository } from 'typeorm';
 import { hash } from 'bcryptjs';
 
 import AppError from '../errors/AppError';
-import Admin from '../models/Admin';
+import Admin from '../schemas/Admin';
 
 interface Request {
   name: string;
@@ -12,7 +12,7 @@ interface Request {
 
 class CreateAdminService {
   public async execute({ name, email, password }: Request): Promise<Admin> {
-    const adminsRepository = getRepository(Admin);
+    const adminsRepository = getMongoRepository(Admin);
 
     const checkAdminExists = await adminsRepository.findOne({
       where: { email },

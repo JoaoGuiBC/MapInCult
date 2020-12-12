@@ -13,9 +13,14 @@ import { StyledButton } from './styles';
 interface ModalProps {
   isOpen: boolean;
   setIsOpen: () => void;
+  getEvents: () => void;
 }
 
-const Modals: React.FC<ModalProps> = ({ isOpen, setIsOpen }: ModalProps) => {
+const Modals: React.FC<ModalProps> = ({
+  isOpen,
+  setIsOpen,
+  getEvents,
+}: ModalProps) => {
   const [modalStatus, setModalStatus] = useState(isOpen);
 
   const { token } = useAuth();
@@ -69,7 +74,7 @@ const Modals: React.FC<ModalProps> = ({ isOpen, setIsOpen }: ModalProps) => {
         <FiXCircle color="#312e38" size={24} />
       </StyledButton>
 
-      {token ? <NewEventModal /> : <SignInModal />}
+      {token ? <NewEventModal getEvents={getEvents} /> : <SignInModal />}
     </ReactModal>
   );
 };

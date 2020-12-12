@@ -1,15 +1,16 @@
 import {
+  ObjectID,
   Entity,
-  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ObjectIdColumn,
 } from 'typeorm';
 
 @Entity('admins')
 class Admin {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @ObjectIdColumn()
+  id: ObjectID;
 
   @Column()
   name: string;
@@ -27,4 +28,4 @@ class Admin {
   updated_at: Date;
 }
 
-export default Admin;
+export default Admin

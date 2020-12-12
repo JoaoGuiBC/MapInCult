@@ -2,20 +2,25 @@ import React, { useCallback, useEffect, useState } from 'react';
 import {
   FiPlus,
   FiChevronsLeft,
+  FiChevronLeft,
   FiChevronsRight,
   FiMinus,
+  FiTrash,
 } from 'react-icons/fi';
 import { TileLayer, Marker } from 'react-leaflet';
 import Leaflet from 'leaflet';
 
 import 'leaflet/dist/leaflet.css';
 
+import { useAuth } from '../../hooks/auth';
+
 import {
   Header,
   Sidebar,
   Container,
-  StyledButton,
   StyledPopup,
+  StyledButton,
+  ExcludeButton,
   TimelineContainer,
   StyledMapContainer,
 } from './styles';
@@ -50,12 +55,20 @@ const EventsMap: React.FC = () => {
   const [initialDate, setInitialDate] = useState<number>(2001);
   const [finalDate, setFinalDate] = useState<number>(2100);
   const [modalOpen, setModalOpen] = useState(false);
+  const [admin, setAdmin] = useState('');
+  const [menuIsVisible, setMenuIsVisible] = useState(true);
 
-  useEffect(() => {
+  const { token } = useAuth();
+
+  const getEvents = useCallback(() => {
     api.get('events').then(response => {
       setEvents(response.data);
     });
   }, []);
+
+  useEffect(getEvents, [getEvents]);
+
+  useEffect(() => setAdmin(token), [token]);
 
   const toggleModal = useCallback(() => setModalOpen(opened => !opened), []);
 
@@ -69,9 +82,24 @@ const EventsMap: React.FC = () => {
     setFinalDate(Date => Date + 100);
   }, []);
 
+  const deleteEvent = useCallback(
+    async (id: string) => {
+      await api.delete('events', {
+        data: { id },
+        headers: { authorization: admin },
+      });
+
+      setEvents(oldEvents => oldEvents.filter(event => event.id !== id));
+    },
+    [admin],
+  );
+
   return (
     <Container>
-      <Sidebar>
+      <Sidebar isVisible={menuIsVisible}>
+        <button type="button" onClick={() => setMenuIsVisible(!menuIsVisible)}>
+          <FiChevronLeft size={30} />
+        </button>
         <Header>
           <img src={logoImg} alt="MIC" />
 
@@ -87,9 +115,6 @@ const EventsMap: React.FC = () => {
         maxZoom={7}
         zoomControl={false}
         doubleClickZoom={false}
-        years={events.map(event => event.year)}
-        initialDate={initialDate}
-        finalDate={finalDate}
       >
         <TileLayer
           url={`https://api.mapbox.com/styles/v1/joaoguibc/ckh8f39x311nc19qhcqusrknv/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
@@ -105,6 +130,12 @@ const EventsMap: React.FC = () => {
               >
                 <StyledPopup closeButton={false} minWidth={240} maxWidth={340}>
                   <h2>{`${event.name} - ${event.year}`}</h2>
+
+                  {admin && (
+                    <ExcludeButton onClick={() => deleteEvent(event.id)}>
+                      <FiTrash size={18} />
+                    </ExcludeButton>
+                  )}
 
                   <p>{event.description}</p>
 
@@ -141,7 +172,11 @@ const EventsMap: React.FC = () => {
         <FiPlus size={32} color="#312e38" />
       </StyledButton>
 
-      <Modals isOpen={modalOpen} setIsOpen={toggleModal} />
+      <Modals
+        isOpen={modalOpen}
+        setIsOpen={toggleModal}
+        getEvents={getEvents}
+      />
     </Container>
   );
 };

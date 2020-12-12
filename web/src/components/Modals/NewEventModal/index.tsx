@@ -18,7 +18,11 @@ import api from '../../../services/api';
 import { useAuth } from '../../../hooks/auth';
 import { useToast } from '../../../hooks/toast';
 
-const NewEventModal: React.FC = () => {
+interface ModalProps {
+  getEvents: () => void;
+}
+
+const NewEventModal: React.FC<ModalProps> = ({ getEvents }: ModalProps) => {
   const formRef = useRef<FormHandles>(null);
   const { token } = useAuth();
   const { addToast } = useToast();
@@ -61,6 +65,8 @@ const NewEventModal: React.FC = () => {
           title: 'Evento cadastrado com sucesso',
           type: 'success',
         });
+
+        getEvents();
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -76,7 +82,7 @@ const NewEventModal: React.FC = () => {
         });
       }
     },
-    [addToast, token],
+    [addToast, token, getEvents],
   );
 
   return (

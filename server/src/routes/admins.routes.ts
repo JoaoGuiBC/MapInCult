@@ -1,14 +1,14 @@
 import { Router } from 'express';
-import { getRepository } from 'typeorm';
+import { getMongoRepository } from 'typeorm';
 
-import Admin from '../models/Admin';
+import Admin from '../schemas/Admin';
 
 import CreateAdminService from '../services/CreateAdminService';
 
 const adminsRouter = Router();
 
 adminsRouter.get('/', async (request, response) => {
-  const adminsRepository = getRepository(Admin);
+  const adminsRepository = getMongoRepository(Admin);
 
   const admins = await adminsRepository.find();
 

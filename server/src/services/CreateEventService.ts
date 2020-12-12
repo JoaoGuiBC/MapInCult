@@ -1,6 +1,6 @@
-import { getRepository } from 'typeorm';
+import { getMongoRepository } from 'typeorm';
 
-import Event from '../models/Event';
+import Event from '../schemas/Event';
 
 interface Request {
   name: string;
@@ -20,7 +20,7 @@ class CreateEventService {
     longitude,
     link,
   }: Request): Promise<Event> {
-    const eventRepository = getRepository(Event);
+    const eventRepository = getMongoRepository(Event);
 
     const event = eventRepository.create({
       name,

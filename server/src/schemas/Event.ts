@@ -1,15 +1,16 @@
 import {
+  ObjectID,
   Entity,
-  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ObjectIdColumn,
 } from 'typeorm';
 
 @Entity('events')
 class Event {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @ObjectIdColumn()
+  id: ObjectID;
 
   @Column()
   name: string;
@@ -36,4 +37,4 @@ class Event {
   updated_at: Date;
 }
 
-export default Event;
+export default Event

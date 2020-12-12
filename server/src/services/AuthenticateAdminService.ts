@@ -1,10 +1,10 @@
-import { getRepository } from 'typeorm';
+import { getMongoRepository } from 'typeorm';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 
 import AppError from '../errors/AppError';
 import authConfig from '../config/auth';
-import Admin from '../models/Admin';
+import Admin from '../schemas/Admin';
 
 interface Response {
   admin: Admin;
@@ -18,7 +18,7 @@ interface Request {
 
 class AuthenticateAdminService {
   public async execute({ email, password }: Request): Promise<Response> {
-    const adminsRepository = getRepository(Admin);
+    const adminsRepository = getMongoRepository(Admin);
 
     const admin = await adminsRepository.findOne({ where: { email } });
 
@@ -35,7 +35,7 @@ class AuthenticateAdminService {
     const { secret, expiresIn } = authConfig.jwt;
 
     const token = sign({}, secret, {
-      subject: admin.id,
+      subject: String(admin.id),
       expiresIn,
     });
 

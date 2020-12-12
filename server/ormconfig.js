@@ -1,17 +1,10 @@
 module.exports = {
-  "type": "postgres",
+  "type": "mongodb",
   "host": "localhost",
-  "port": 5432,
-  "username": process.env.POSTGRESQL_USERNAME,
-  "password": process.env.POSTGRESQL_PASSWORD,
-  "database": process.env.POSTGRESQL_DATABASE,
+  "port": 27017,
+  "useUnifiedTopology": true,
+  "database": process.env.MONGODB_DATABASE,
   "entities": [
-    "./src/models/*.ts"
-  ],
-  "migrations": [
-    "./src/database/migrations/*.ts"
-  ],
-  "cli": {
-    "migrationsDir": "./src/database/migrations"
-  }
+    "./src/schemas/*.ts"
+  ]
 }
