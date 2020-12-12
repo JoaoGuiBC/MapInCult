@@ -23,7 +23,8 @@ O presente projeto foi desenvolvido com o uso das seguintes tecnologias:
 - [React.js](https://reactjs.org)
 - [Node.js](https://nodejs.org/en/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [PostgreSQL](https://www.postgresql.org/)
+- [TypeORM](https://typeorm.io/#/)
+- [MongoDB](https://www.mongodb.com/)
 - [React Leaflet](https://react-leaflet.js.org/)
 - [Mapbox](https://docs.mapbox.com/) 👈 Você precisará ter uma conta para gerar um access token
 
@@ -32,8 +33,6 @@ O presente projeto foi desenvolvido com o uso das seguintes tecnologias:
 Funcionalidades que podem ser adicionadas para melhorar a aplicação:
 
 - Versão mobile;
-- Opção para deletar eventos;
-- Opção para modificar eventos;
 - Adicionar opção para resetar senha;
 - Sistema para pesquisar eventos pelo nome;
 - Adicionar um mini-mapa para selecionar a latitude e longitude quando for cadastrar um novo evento;
