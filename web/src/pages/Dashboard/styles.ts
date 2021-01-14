@@ -93,6 +93,12 @@ export const Sidebar = styled.aside<menuVisibility>`
   flex-direction: column;
   justify-content: space-between;
 
+  @media (max-width: 900px) {
+    display: none;
+    visibility: hidden;
+    z-index: 0;
+  }
+
   ${props =>
     !props.isVisible &&
     css`

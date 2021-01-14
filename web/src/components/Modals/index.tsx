@@ -38,7 +38,7 @@ const Modals: React.FC<ModalProps> = ({
         overlay: {
           zIndex: 10,
           backgroundColor: 'none',
-          width: '450px',
+          // width: '450px',
           height: '85vh',
 
           position: 'absolute',
@@ -56,7 +56,7 @@ const Modals: React.FC<ModalProps> = ({
           right: '0px',
           bottom: '0px',
 
-          width: '450px',
+          // width: '450px',
           height: '85vh',
 
           border: '1px solid #f4e7d6',

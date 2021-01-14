@@ -30,7 +30,18 @@ export default createGlobalStyle`
 
     div.ReactModalPortal {
       div.ReactModal__Overlay--after-open {
+        width: 450px;
+
+        @media(max-width: 500px) {
+          width: 330px;
+        }
+
         div.ReactModal__Content--after-open {
+          width: 450px;
+
+          @media(max-width: 500px) {
+            width: 330px;
+          }
           -webkit-box-shadow: rgba(0,0,0,0.8) 0px 0 10px;
           -moz-box-shadow: rgba(0,0,0,0.8) 0 0 10px;
           box-shadow: rgba(0,0,0,0.8) 0 0 10px;
