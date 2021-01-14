@@ -182,6 +182,10 @@ export const StyledButton = styled.button`
   right: 25px;
   bottom: 25px;
 
+  @media (max-width: 500px) {
+    bottom: 100px;
+  }
+
   width: 40px;
   height: 40px;
 
@@ -206,6 +210,10 @@ export const TimelineContainer = styled.div`
   z-index: 10;
   right: 90px;
   bottom: 25px;
+
+  @media (max-width: 500px) {
+    bottom: 100px;
+  }
 
   background: #312e38;
   border: 1px solid #e7d6bf;
