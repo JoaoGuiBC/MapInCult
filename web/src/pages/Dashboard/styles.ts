@@ -183,7 +183,7 @@ export const StyledButton = styled.button`
   bottom: 25px;
 
   @media (max-width: 500px) {
-    bottom: 100px;
+    bottom: 90px;
   }
 
   width: 40px;
@@ -212,7 +212,7 @@ export const TimelineContainer = styled.div`
   bottom: 25px;
 
   @media (max-width: 500px) {
-    bottom: 100px;
+    bottom: 90px;
   }
 
   background: #312e38;
