@@ -106,7 +106,7 @@ export const Sidebar = styled.aside<menuVisibility>`
       height: 40px;
       padding: 0;
       border-radius: 10px;
-      animation: ${dissappearAnimation} 0.3s;
+      animation: ${dissappearAnimation} 0.3s ease-out;
 
       button {
         svg {
@@ -115,7 +115,7 @@ export const Sidebar = styled.aside<menuVisibility>`
       }
 
       header {
-        animation: ${hideHeaderAnimation} 0.3s;
+        animation: ${hideHeaderAnimation} 0.1s;
         transform: translateX(-200px);
       }
     `}
@@ -127,7 +127,7 @@ export const Sidebar = styled.aside<menuVisibility>`
       height: 100vh;
       padding: 0px 40px;
       border-radius: 0;
-      animation: ${appearAnimation} 0.3s;
+      animation: ${appearAnimation} 0.3s ease-out;
 
       button {
         svg {
@@ -136,7 +136,7 @@ export const Sidebar = styled.aside<menuVisibility>`
       }
 
       header {
-        animation: ${showHeaderAnimation} 0.3s;
+        animation: ${showHeaderAnimation} 0.7s ease-in-out;
         transform: translateX(0);
       }
     `}

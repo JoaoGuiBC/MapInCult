@@ -40,6 +40,11 @@ const mapIcon = Leaflet.icon({
   popupAnchor: [0, -35],
 });
 
+const bounds = Leaflet.latLngBounds([
+  [84.984656, 200.126969],
+  [-84.969265, -200.424584],
+]);
+
 interface eventsData {
   id: string;
   name: string;
@@ -108,9 +113,12 @@ const EventsMap: React.FC = () => {
       </Sidebar>
 
       <StyledMapContainer
-        center={[-12.8410503, -52.7926806]}
+        center={[0, 0]}
         zoom={4}
         style={{ width: '100%', height: '100%' }}
+        maxBounds={bounds}
+        boundsOptions={{ padding: [50, 50] }}
+        maxBoundsViscosity={1}
         minZoom={4}
         maxZoom={7}
         zoomControl={false}
